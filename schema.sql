@@ -1,4 +1,6 @@
 DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS portfolio;
+DROP TABLE IF EXISTS eventLog;
 
 CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -16,6 +18,9 @@ CREATE TABLE portfolio (
 CREATE TABLE eventLog(
     id INTEGER,
     event ENUM('Bought', 'Sold', 'Logged on', 'Logged out') NOT NULL,
-    
-
+    stockSold VARCHAR(10),
+    stockBought VARCHAR(10),
+    timeLoggedOn DATETIME,
+    timeLoggedOff DATETIME,
+    FOREIGN KEY (id) REFERENCES user(id)
 )
